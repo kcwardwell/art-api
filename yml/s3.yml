@@ -1,0 +1,28 @@
+Resources:
+    PhotoBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.artPhotoBucketName}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedMethods:
+                - GET
+                - PUT
+                - HEAD
+                - POST
+                - DELETE
+              AllowedOrigins:
+                - '*'
+    
+    # PhotoBucketPolicy:
+    #   Type: 'AWS::S3::BucketPolicy'
+    #   Properties:
+    #     Bucket: ${self:custom.artPhotoBucketName}
+    #     PolicyDocument:
+    #       Statement:
+    #         - Action:
+    #             - s3:GetObject
+    #           Effect: Allow
+    #           Resource: "arn:aws:s3:::${self:custom.artPhotoBucketName}/*"
+    #           Principal: '*'
+             

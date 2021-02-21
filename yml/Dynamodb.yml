@@ -1,0 +1,16 @@
+Resources:
+  ArtTableDynamo:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.artDataTable} 
+      AttributeDefinitions:
+        - AttributeName: typeId
+          AttributeType: S
+        - AttributeName: artId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: typeId
+          KeyType: HASH
+        - AttributeName: artId
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
