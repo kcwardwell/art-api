@@ -3,7 +3,7 @@
 const databaseManager = require('./databaseManager');
 
 
-module.exports.hanlder = (event, context, callback) => {
+module.exports.handler = (event, context, callback) => {
   const itemId = event.pathParameters.itemId;
 
   const body = JSON.parse(event.body);

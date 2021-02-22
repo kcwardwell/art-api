@@ -1,23 +1,14 @@
   hello:
-    handler: handlers/hello.handler
+    handler: handler.hello
     events:
       - httpApi:
           path: /hello
-          method: get
-  uploadPhoto:
-    handler: handlers/hello.handler
-    events:
-      - httpApi:
-          path:/uploadPhoto
-          method: put
-    environment:
-      artPhotoBucketName: ${self:custom.artPhotoBucketName}
-  
-  saveArt:
-    handler: handlers/database/handler.saveArtInfo
+          method: get  
+  saveItem:
+    handler: handler.saveItem
     environment:
       artDataTable: ${self:custom.itemsDataTable}
     events:
       - httpApi:
-          path: /saveArt
-          method: post
+          path: /saveItem
+          method: put

@@ -1,11 +1,11 @@
 'use strict';
 
-const manageFile = require('./manageFile');
+const fileManager = require('./fileManager');
 
-module.exports.appendText = (event, context, callback) => {
+module.exports.handler = (event, context, callback) => {
   const text = event.queryStringParameters.text;
 
-  manageFile.appendText(text).then(result => {
+  fileManager.appendText(text).then(result => {
     const response = {
       statusCode: 200,
       body: JSON.stringify({

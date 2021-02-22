@@ -3,14 +3,14 @@
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3();
 
-const BUCKET = 'serverless-s3-operations-bucket'; //move to emvironment variable
-const OBJECTKEY = 'file.txt';
+const BUCKET = process.env.filesBucket
+
 
 module.exports.appendText = text => {
   return getS3Object(BUCKET, OBJECTKEY).then(data => appendText(data.Body, text)).then(buffer => putS3Object(BUCKET, OBJECTKEY, buffer)).then(() => getSignedUrl(BUCKET, OBJECTKEY));
 };
 
-function getS3Object(bucket, key) {
+module.exports.getS3Object = (bucket, key) => {
   return S3.getObject({
     Bucket: bucket,
     Key: key,
@@ -33,7 +33,7 @@ function appendText(data, text) {
   return data.toString('ascii') + '\n' + text;
 }
 
-function putS3Object(bucket, key, body) {
+module.exports.putS3Object = (bucket, key, body) => {
   return S3.putObject({
     Body: body,
     Bucket: bucket,
@@ -42,7 +42,7 @@ function putS3Object(bucket, key, body) {
   }).promise();
 }
 
-function getSignedUrl(bucket, key) {
+module.exports.getSignedUrl = (bucket, key) => {
   const params = { Bucket: bucket, Key: key };
   return S3.getSignedUrl('getObject', params);
 }

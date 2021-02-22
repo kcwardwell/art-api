@@ -21,10 +21,10 @@
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.artDataTable}"
+      Resource: "arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.itemsDataTable}"
     - Effect: "Allow"
       Action:
         - "s3:GetObject"
         - "s3:ListBucket"
         - "s3:PutObject"
-      Resource: "arn:aws:s3:::${self:custom.artPhotoBucketName"
+      Resource: "arn:aws:s3:::${self:custom.filesBucket"
