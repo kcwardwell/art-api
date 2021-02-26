@@ -12,3 +12,11 @@
       - httpApi:
           path: /saveItem
           method: put
+  findItem:
+    handler: handler.findItem
+    environment:
+      artDataTable: ${self:custom.itemsDataTable}
+    events:
+      - httpApi:
+          path: /findItem
+          method: get

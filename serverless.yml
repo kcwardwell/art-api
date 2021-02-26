@@ -82,8 +82,8 @@ provider:
 #    - exclude-me-dir/**
 
 custom:
-  itemsDataTable: "artWork-ecs"
-  filesBucket: "art-photos-bucket"
+  itemsDataTable: "artWork-margo-ecs"
+  filesBucket: "art-photos-margo-bucket"
  
 
 functions:  ${file(yml/functions.yml)}

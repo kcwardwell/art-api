@@ -1,7 +1,8 @@
 import AWS from'aws-sdk';
-const db = () => new AWS.DynamoDB.DocumentClient();
-const TABLE_NAME = process.env.itemsDataTable;
-export const putItem = async (item) => {
+const db = new AWS.DynamoDB.DocumentClient();
+const TABLE_NAME = process.env.artDataTable;
+
+ export const putItem = (item) => {
   console.log("db", db);
   console.log("TABLE_NAME", TABLE_NAME);
   const params = {
@@ -9,5 +10,6 @@ export const putItem = async (item) => {
     Item: item
   };
   console.log("params", params);
-  return await db.put(params);
+  db.put(params).promise();
 };
+
